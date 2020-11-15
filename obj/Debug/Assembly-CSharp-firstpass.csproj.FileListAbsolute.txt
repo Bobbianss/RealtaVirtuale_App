@@ -1,0 +1,2 @@
+C:\Users\abenf\Documents\Progetti unity\Git\RealtaVirtuale_App\obj\Debug\Assembly-CSharp-firstpass.csprojAssemblyReference.cache
+C:\Users\abenf\Documents\Progetti unity\Git\RealtaVirtuale_App\obj\Debug\Assembly-CSharp-firstpass.csproj.CoreCompileInputs.cache
