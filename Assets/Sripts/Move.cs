@@ -7,7 +7,6 @@ public class Move : MonoBehaviour
     [Header("Movement")]
     public float playerSpeed;
     public float jumpForce;
-
     [HideInInspector]
     public Rigidbody rb;
 
@@ -16,6 +15,7 @@ public class Move : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+       
     }
 
     void Update()
@@ -37,6 +37,7 @@ public class Move : MonoBehaviour
     {
         Vector3 movement = (x + z).normalized * playerSpeed;
         rb.AddForce(movement);
+        
     }
 
     void Jump()
