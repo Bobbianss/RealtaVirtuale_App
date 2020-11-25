@@ -7,12 +7,12 @@ public class FlyForce : MonoBehaviour
     public Camera cam;
     public Rigidbody gabbiano;
     public Vector3 dragBody;
-    public float windInfluence;
+    public float windInfluence = 1f;
+    public float dragInfluence = 1f;
     public float gravity;
     public float dimPortanza;
-    public float propulsion;
+    public float propulsion = 1000f;
     public float portanza;
-    private Vector3 totalForce;
     private Vector3 windTaken;
     // Start is called before the first frame update
     void Start()
@@ -22,24 +22,34 @@ public class FlyForce : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {   
-        Vector3 dragVelocity = gabbiano.velocity + windTaken*windInfluence;
-        Vector3 squareDragVelocity = Vector3.Scale(dragVelocity, dragVelocity); 
+    {
+        Vector3 totalForce = Vector3.zero;
+        
+        Vector3 flowVelocityG = - gabbiano.velocity + (windTaken * windInfluence); //https://en.wikipedia.org/wiki/Flow_velocity
+        Vector3 flowVelocityL = gabbiano.transform.InverseTransformVector(flowVelocityG);
+        Vector3 unsignedFlowVelocityL = new Vector3(Mathf.Abs(flowVelocityL.x), Mathf.Abs(flowVelocityL.y), Mathf.Abs(flowVelocityL.z));
+        Vector3 dragForceL = Vector3.Scale(Vector3.Scale(flowVelocityL, unsignedFlowVelocityL), dragBody*dragInfluence);
+        Vector3 dragForceG = gabbiano.transform.TransformVector(dragForceL);
 
-               
-       Vector3 dragForce = Vector3.Scale(squareDragVelocity, gabbiano.transform.TransformDirection(dragBody));
-       Vector3 verticalForce = Vector3.up * (portanza - dimPortanza - gravity);
 
-       Vector3 forwardForce = cam.transform.forward * Input.GetAxis("Vertical") * propulsion ;
 
-       Vector3 totalForce = (dragForce + verticalForce + forwardForce) * Time.fixedDeltaTime;  
+        Vector3 verticalForce = Vector3.up * (portanza - dimPortanza - gravity);
+
+        Vector3 forwardForce = Input.GetAxis("Fire1") * cam.transform.forward * propulsion;
+
+
+        totalForce = (dragForceG + verticalForce + forwardForce) * Time.fixedDeltaTime;
+
+
+        Debug.Log(dragForceG);
+
 
 
         gabbiano.AddForce(totalForce);
 
          
     }
-
+    
     private void OnTriggerEnter(Collider collision )
     {
         if (collision.gameObject.GetComponent<Wind>())

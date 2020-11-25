@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wind : MonoBehaviour
 {
-    public Vector3 windForce;
+    public Vector3 windForce = Vector3.zero;
     
 
 }
