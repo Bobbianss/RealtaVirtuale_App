@@ -53,6 +53,9 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Cinemachine">
+      <HintPath>Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -61,9 +64,6 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/2019.4.14f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.dll</HintPath>
@@ -260,11 +260,11 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="clipper_library">
       <HintPath>C:/Users/girde/Desktop/GitProjects/RealtaVirtuale_App/Library/PackageCache/com.unity.cinemachine@2.7.1/Runtime/ThirdParty/clipper_library.dll</HintPath>
@@ -616,13 +616,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Sripts\DialogueSystem.cs" />
     <Compile Include="Assets\Sripts\FlyForce.cs" />
-    <Compile Include="Assets\Sripts\Flying.cs" />
-    <Compile Include="Assets\Sripts\Move.cs" />
-    <Compile Include="Assets\Sripts\MovementWithForce.cs" />
-    <Compile Include="Assets\Sripts\NewFlying.cs" />
-    <Compile Include="Assets\Sripts\Walk.cs" />
+    <Compile Include="Assets\Sripts\NPCTalk.cs" />
+    <Compile Include="Assets\Sripts\PauseMenu.cs" />
+    <Compile Include="Assets\Sripts\PlayerController.cs" />
+    <Compile Include="Assets\Sripts\SetVolume.cs" />
+    <Compile Include="Assets\Sripts\ShowMap.cs" />
     <Compile Include="Assets\Sripts\Wind.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Dialogues\Dialogo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
