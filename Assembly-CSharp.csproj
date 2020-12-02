@@ -62,13 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Sripts\FlyForce.cs" />
-    <Compile Include="Assets\Sripts\Flying.cs" />
-    <Compile Include="Assets\Sripts\Move.cs" />
-    <Compile Include="Assets\Sripts\MovementWithForce.cs" />
-    <Compile Include="Assets\Sripts\NewFlying.cs" />
-    <Compile Include="Assets\Sripts\Walk.cs" />
-    <Compile Include="Assets\Sripts\Wind.cs" />
+    <Compile Include="Assets\Scripts\FlyForce.cs" />
+    <Compile Include="Assets\Scripts\ModelYawAndPitch.cs" />
+    <Compile Include="Assets\Scripts\Wind.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
