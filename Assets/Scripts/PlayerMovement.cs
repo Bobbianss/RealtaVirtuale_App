@@ -15,7 +15,9 @@ public class PlayerMovement : MonoBehaviour
     //terra
     public float jumpForce = 100f;
     public float walkForce = 10f;
+    public float feetOffset = 1f;
     //aria
+    public GameObject backFin; //rigidbody che tiene il gabbiano dritto in volo
     public Vector3 dragBody;
     public float windInfluence = 1f;
     public float dragInfluence = 1f;
@@ -38,6 +40,13 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("JumpMethod");
             Jump();
         }
+
+        if (!IsGrounded() && Input.GetMouseButtonDown(0) && isWalkingNotFlying && canFly)
+        {
+            TakeOff();
+        }
+
+        Debug.Log("Is grounded" + IsGrounded() + "is walking" + isWalkingNotFlying + "can fly" + canFly);
     }
 
     void FixedUpdate()
@@ -57,23 +66,34 @@ public class PlayerMovement : MonoBehaviour
         gabbiano.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
-    private bool IsGrounded()
+    private bool IsGrounded() //controlla se si sta toccando terra SERVE SOLO PER SALTARE
     {
-        throw new NotImplementedException();
-    } //controlla se si sta toccando terra SERVE SOLO PER SALTARE
+        Debug.DrawRay(transform.position - (Vector3.up * feetOffset), -Vector3.up);
+        return Physics.Raycast(transform.position-(Vector3.up*feetOffset), -Vector3.up, 0.1f);
+    } 
 
-    private void Land()
-    {
-        //setta il rigidbody affinché cammini (attiva la gravità, spegne la pinna caudale, azzera la trasformata del modello del gabbiano)
+    private void Land() //fa atterrare il gabbiano
+    {      
+        gabbiano.useGravity = true;
+        backFin.SetActive(false); //spegne pinna caudale
         isWalkingNotFlying = true;
-    }//fa atterrare il gabbiano
+    }
 
-    private void WalkPhysics()
+    private void TakeOff()
     {
-        //proietta camera.forward e camera.right sul piano XZ, li normalizza, e li usa per applicare forze proporzionali agli axis horizontal e vertical.
-        //
-        throw new NotImplementedException();
-    } //usa i controlli per far camminare il gabbiano con WASD
+        gabbiano.useGravity = false;
+        backFin.SetActive(true); //spegne pinna caudale
+        isWalkingNotFlying = false;
+    }
+
+    private void WalkPhysics() //usa i controlli per far camminare il gabbiano con WASD
+    {
+        Vector3 forward = Vector3.ProjectOnPlane(cam.transform.forward, Vector3.up).normalized;   //proietta camera.forward e camera.right sul piano XZ, li normalizza.
+        Vector3 right = Vector3.ProjectOnPlane(cam.transform.right, Vector3.up).normalized;
+        Vector3 walk = forward * Input.GetAxis("Vertical") + right * Input.GetAxis("Horizontal");
+        gabbiano.AddForce(walkForce * walk);//li usa per applicare forze proporzionali agli axis horizontal e vertical.
+        
+    } 
 
     private void FlyPhysics() //Quando si vola, questo metodo calcola la forza totale sul gabbiano.
     {
