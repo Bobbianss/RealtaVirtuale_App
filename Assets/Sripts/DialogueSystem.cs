@@ -9,14 +9,14 @@ public class DialogueSystem : MonoBehaviour
     public Text uiName;
     public GameObject dialogueGUI;
     public Transform dialogueBoxGUI;
-    //Speed write
-    public float letterDelay = 0.1f;
+    //Velocità scrittura
+    public float letterDelay = 0.1f;  
     public float letterMultiplier = 0.5f;
 
     public KeyCode dialogueInput = KeyCode.F;
 
     //Text Lines 
-    public List <string> dialogueLines;
+    public List<string> dialogueLines;
     public List<string> senteces;
     public List<string> names;
 
@@ -144,7 +144,7 @@ public class DialogueSystem : MonoBehaviour
         {
             letterIsMultiplied = false;
             dialogueActive = false;
-            StopAllCoroutines();
+            StopAllCoroutines(); //ma se dovessimo usare altre coroutine questo ci uccide anche quelle?
             dialogueGUI.SetActive(false);
             dialogueBoxGUI.gameObject.SetActive(false);
         }

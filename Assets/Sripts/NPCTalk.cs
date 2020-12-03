@@ -8,7 +8,7 @@ public class NPCTalk : MonoBehaviour
     //Struct Dialogue 
     List<string> dialogLines;
     List<string> names;
-    List<string> senteces;
+    List<string> sentences;
 
     // interface
     DialogueSystem dialogueSystem;
@@ -17,7 +17,7 @@ public class NPCTalk : MonoBehaviour
     void Start()
     {
         names = new List<string>();
-        senteces = new List<string>();
+        sentences = new List<string>();
         if (dialogueFile)
         {
             dialogLines = new List<string>(dialogueFile.text.Split("\n"[0]));
@@ -29,7 +29,7 @@ public class NPCTalk : MonoBehaviour
             Debug.Log("nome" + vectorTemp[0]);
             Debug.Log("frase" + vectorTemp[1]);
             names.Add(vectorTemp[0]);
-            senteces.Add(vectorTemp[1]);
+            sentences.Add(vectorTemp[1]);
         }
 
         dialogueSystem = FindObjectOfType<DialogueSystem>();
@@ -39,7 +39,7 @@ public class NPCTalk : MonoBehaviour
     {        
         dialogueSystem.dialogueLines = dialogLines;
         dialogueSystem.names = names;
-        dialogueSystem.senteces = senteces;
+        dialogueSystem.senteces = sentences;
     }//[m] end setUpDialogueText()
 
 
