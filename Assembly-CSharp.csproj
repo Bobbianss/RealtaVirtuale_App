@@ -63,7 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\FlyForce.cs" />
+    <Compile Include="Assets\Scripts\LandingZone.cs" />
     <Compile Include="Assets\Scripts\ModelYawAndPitch.cs" />
+    <Compile Include="Assets\Scripts\PlayerController_Anto.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Wind.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
