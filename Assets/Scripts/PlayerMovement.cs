@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         gabbiano = GetComponent<Rigidbody>();
+        feetOffset = gabbiano.GetComponent<Collider>().bounds.size.z/2;
     }
 
     private void Update() //usato per controllare quando saltare, quando camminare e quando volare
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             TakeOff();
         }
 
-        Debug.Log("Is grounded" + IsGrounded() + "is walking" + isWalkingNotFlying + "can fly" + canFly);
+        Debug.Log("Is grounded " + IsGrounded() + "  is walking " + isWalkingNotFlying + "  can fly " + canFly);
     }
 
     void FixedUpdate()
@@ -75,14 +76,14 @@ public class PlayerMovement : MonoBehaviour
     private void Land() //fa atterrare il gabbiano
     {      
         gabbiano.useGravity = true;
-        backFin.SetActive(false); //spegne pinna caudale
+        //backFin.SetActive(false); //spegne pinna caudale
         isWalkingNotFlying = true;
     }
 
-    private void TakeOff()
+    private void TakeOff() //serve davvero?
     {
         gabbiano.useGravity = false;
-        backFin.SetActive(true); //spegne pinna caudale
+        //backFin.SetActive(true); //spegne pinna caudale
         isWalkingNotFlying = false;
     }
 

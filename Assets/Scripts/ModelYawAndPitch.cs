@@ -7,8 +7,9 @@ public class ModelYawAndPitch : MonoBehaviour //QUESTA CLASSE RUOTA IL MODELLO I
     public Rigidbody rb;
     public float pitchSensitivity = 1f;
     public float rollSensitivity = 1f;
-    public float smoothSpeed = 0.5f;
-    private Vector3 smoothVar = Vector3.zero;
+    private float transitionVar = 0f;
+    public float transitionTimeInSeconds = 0.7f;
+
     void Start()
     {
         
@@ -18,9 +19,11 @@ public class ModelYawAndPitch : MonoBehaviour //QUESTA CLASSE RUOTA IL MODELLO I
     {
         if (GetComponentInParent<PlayerMovement>().isWalkingNotFlying)
         {
-            Vector3.SmoothDamp(transform.eulerAngles, Vector3.zero, ref smoothVar, smoothSpeed);
+            transitionVar += Time.deltaTime / transitionTimeInSeconds;  
+            transform.rotation = Quaternion.Slerp(transform.rotation, rb.rotation, Mathf.SmoothStep(0,1, transitionVar));
         } else
         {
+            transitionVar = 0f;
             transform.eulerAngles = new Vector3(DeltaHeightToPitch(), transform.eulerAngles.y, DeltaYawToRoll());
         }
         
