@@ -37,9 +37,9 @@ public class NPCTalk : MonoBehaviour
 
     void setUpDialogueText()
     {        
-        dialogueSystem.dialogueLines = dialogLines;
+        //dialogueSystem.dialogueLines = dialogLines;
         dialogueSystem.names = names;
-        dialogueSystem.senteces = sentences;
+        dialogueSystem.sentences = sentences;
     }//[m] end setUpDialogueText()
 
 
@@ -51,7 +51,7 @@ public class NPCTalk : MonoBehaviour
         FindObjectOfType<DialogueSystem>().enterOfRangeOfNPC();
         if((other.gameObject.tag == "Player") && Input.GetKeyDown(dialogueSystem.dialogueInput))
         {
-            this.gameObject.GetComponent<NPCTalk>().enabled = true;
+            //this.gameObject.GetComponent<NPCTalk>().enabled = true;
             setUpDialogueText();
             FindObjectOfType<DialogueSystem>().startTexting();
         }

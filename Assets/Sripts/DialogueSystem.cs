@@ -11,16 +11,16 @@ public class DialogueSystem : MonoBehaviour
     public Transform dialogueBoxGUI;
     //Velocità scrittura
     public float letterDelay = 0.1f;  
-    public float letterMultiplier = 0.5f;
+    public float textAccelerationFactor = 2f;
 
     public KeyCode dialogueInput = KeyCode.F;
 
     //Text Lines 
     public List<string> dialogueLines;
-    public List<string> senteces;
+    public List<string> sentences;
     public List<string> names;
 
-    public bool letterIsMultiplied = false;
+    public bool endOfSentence = false;
     public bool dialogueActive = false;
     public bool dialogueEnded = false;
     public bool outOfRange = true;
@@ -52,22 +52,22 @@ public class DialogueSystem : MonoBehaviour
 
     private IEnumerator displayToString(string stringToDisplay)
     {
-        if (outOfRange == false)
+        if (outOfRange == false) //se sei dentro
         {
-            int lengtStringLine = stringToDisplay.Length;
+            int lengthStringLine = stringToDisplay.Length;
             int currentCharacterIndex = 0;
             uiText.text = "";
 
-            while (currentCharacterIndex < lengtStringLine)
+            while (currentCharacterIndex < lengthStringLine)
             {
-              
+             
                 uiText.text += stringToDisplay[currentCharacterIndex];
                 currentCharacterIndex++; // carattere per carattere
-                if (currentCharacterIndex < lengtStringLine)
+                if (currentCharacterIndex < lengthStringLine)
                 {
-                    if (Input.GetKeyDown(dialogueInput))
+                    if (Input.GetKeyDown(dialogueInput)) //cambiare a pressione costante anziché mashing
                     {
-                        yield return new WaitForSeconds(letterDelay * letterMultiplier);
+                        yield return new WaitForSeconds(letterDelay / textAccelerationFactor);
                         Debug.Log("Accelleratuuuu");
                         //audio
                         if (audioClip) audioSource.PlayOneShot(audioClip, 0.5F);
@@ -95,7 +95,7 @@ public class DialogueSystem : MonoBehaviour
                 yield return 0;
             }
             dialogueEnded = false;
-            letterIsMultiplied = false;
+            endOfSentence = false;
             uiText.text = "";
         }
 
@@ -104,17 +104,17 @@ public class DialogueSystem : MonoBehaviour
     {
         if (outOfRange == false)
         {
-            int dialogueLenght = senteces.Count;
+            int dialogueLenght = sentences.Count;
             Debug.Log("quante frasi" + dialogueLenght);
             int currentDialogueIndex = 0;
-            while(currentDialogueIndex< dialogueLenght || !letterIsMultiplied)
+            while(currentDialogueIndex< dialogueLenght || !endOfSentence)
             {
-                if (!letterIsMultiplied)
+                if (!endOfSentence)
                 {
-                    letterIsMultiplied = true;
+                    endOfSentence = true;
                     Debug.Log("Indice" + currentDialogueIndex);
                     uiName.text = names[currentDialogueIndex];
-                    StartCoroutine(displayToString(senteces[currentDialogueIndex++]));
+                    StartCoroutine(displayToString(sentences[currentDialogueIndex++]));
 
                     if(currentDialogueIndex>= dialogueLenght)
                     {
@@ -142,7 +142,7 @@ public class DialogueSystem : MonoBehaviour
         outOfRange = true;
         if (outOfRange == true)
         {
-            letterIsMultiplied = false;
+            endOfSentence = false;
             dialogueActive = false;
             StopAllCoroutines(); //ma se dovessimo usare altre coroutine questo ci uccide anche quelle?
             dialogueGUI.SetActive(false);
