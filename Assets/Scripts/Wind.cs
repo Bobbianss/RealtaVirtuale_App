@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Wind : MonoBehaviour
 {
-    public Vector3 windForce = Vector3.zero;
+    public float windModulus;
 
-    private void Update()
+    private Vector3 windForce;
+
+    public Vector3 WindForce()
     {
-        Debug.DrawRay(transform.position, windForce);
+        return windForce = transform.TransformDirection(Vector3.forward * windModulus);
     }
-
 
 }

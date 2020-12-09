@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour 
 {
     //generali
     public Camera cam;
     public Rigidbody gabbiano;
     //PauseMenu pauseMenu; //scollegato
-    private float viewSensitivity; //scollegato
+    //private float viewSensitivity; //scollegato
     public bool isWalkingNotFlying;
     public bool canFly;
     //terra
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         gabbiano = GetComponent<Rigidbody>();
-        feetOffset = gabbiano.GetComponent<Collider>().bounds.size.z/2;
+        //feetOffset = gabbiano.GetComponent<Collider>().bounds.size.z/2;
     }
 
     private void Update() //usato per controllare quando saltare, quando camminare e quando volare
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             TakeOff();
         }
 
-        Debug.Log("Is grounded " + IsGrounded() + "  is walking " + isWalkingNotFlying + "  can fly " + canFly);
+        Debug.Log("Is grounded " + IsGrounded() + "  is walking " + isWalkingNotFlying + "  can fly " + canFly + "  Wind taken " + windTaken);
     }
 
     void FixedUpdate()
@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Wind>())
         {
-            windTaken = windTaken + collision.gameObject.GetComponent<Wind>().windForce;
+            windTaken = windTaken + collision.gameObject.GetComponent<Wind>().WindForce();
         }
 
         if (collision.gameObject.GetComponent<LandingZone>())
@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Wind>())
         {
-            windTaken = windTaken - collision.gameObject.GetComponent<Wind>().windForce;
+            windTaken = windTaken - collision.gameObject.GetComponent<Wind>().WindForce();
         }
     }
 
