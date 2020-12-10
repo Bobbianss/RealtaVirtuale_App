@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
     //generali
     public Camera cam;
     public Rigidbody gabbiano;
-    //PauseMenu pauseMenu; //scollegato
-    //private float viewSensitivity; //scollegato
+    public bool penalty = false;
+    //PauseMenu pauseMenu;               //scollegato
+    //private float viewSensitivity;     //scollegato
     public bool isWalkingNotFlying;
     public bool canFly;
     //terra
@@ -26,10 +27,14 @@ public class PlayerMovement : MonoBehaviour
     public float propulsion = 1000f;
     public float portanza;
     private Vector3 windTaken;
+    //acqua (mobbasta elementi)
+    public float waterPush = 50f;
+    public float waterPushTime = 2f;
+    private float waterTimeSpentIn = 0f;
    
-
     void Start()
     {
+       
         gabbiano = GetComponent<Rigidbody>();
         //feetOffset = gabbiano.GetComponent<Collider>().bounds.size.z/2;
     }
@@ -47,7 +52,9 @@ public class PlayerMovement : MonoBehaviour
             TakeOff();
         }
 
-        Debug.Log("Is grounded " + IsGrounded() + "  is walking " + isWalkingNotFlying + "  can fly " + canFly + "  Wind taken " + windTaken);
+
+
+        Debug.Log("Is grounded " + IsGrounded() + "  Is walking " + isWalkingNotFlying + "  Can fly " + canFly + "  Wind taken " + windTaken);
     }
 
     void FixedUpdate()
@@ -129,6 +136,16 @@ public class PlayerMovement : MonoBehaviour
             canFly = collision.gameObject.GetComponent<LandingZone>().canFly;
             Land();
         }
+        
+    }
+
+    private void OnTriggerStay(Collider collision)
+    {
+        if (collision.gameObject.GetComponent<Sea>())
+        {
+            waterTimeSpentIn += (Time.deltaTime / waterPushTime);
+            gabbiano.AddForce(Vector3.up * Mathf.Pow(waterTimeSpentIn, 2) * waterPush);
+        }
     }
 
     private void OnTriggerExit(Collider collision) //togli vento
@@ -137,6 +154,12 @@ public class PlayerMovement : MonoBehaviour
         {
             windTaken = windTaken - collision.gameObject.GetComponent<Wind>().WindForce();
         }
+
+        if (collision.gameObject.GetComponent<Sea>())
+        {
+            waterTimeSpentIn = 0;
+        }
+
     }
 
 }
