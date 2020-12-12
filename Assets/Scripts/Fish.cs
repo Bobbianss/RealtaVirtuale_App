@@ -6,15 +6,5 @@ public class Fish : MonoBehaviour
 {
     public float score = 4f;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //This needs to be attached to a trigger collider to work with the satiety system
 }
