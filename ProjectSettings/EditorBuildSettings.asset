@@ -4,5 +4,38 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
-  m_configObjects: {}
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Initialization.unity
+    guid: e8df4c5a458acc5489b2865e6b789224
+  - enabled: 0
+    path: Assets/Scenes/Menus/MainMenu.unity
+    guid: df490f8a21305b549b67b8301af79724
+  - enabled: 0
+    path: Assets/Scenes/Locations/Forest.unity
+    guid: 3a816f06c17361b4398583570bcbf8eb
+  - enabled: 0
+    path: Assets/Scenes/Locations/Beach.unity
+    guid: dfaf60263d5c5dc4e80e2793f4328b32
+  - enabled: 0
+    path: Assets/Scenes/TestingGround.unity
+    guid: 1e57caa7d7ed5e24a88cb3b5c309cc65
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Vecchi assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 758daf1c1b96e4978a5b9b3f5815abf1,
+      type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: bf2387135d5fdc745b74293cd27573be,
+      type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 56b1c58ec65bd4151b3054a32d1f7b69,
+      type: 2}
