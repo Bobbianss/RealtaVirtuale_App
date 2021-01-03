@@ -8,14 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sea
-  m_Shader: {fileID: 4800000, guid: 8d2bb70cbf9db8d4da26e15b26e74248, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 7c47ef6eb90bd094ea6e7a915c282fb3,
+    type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -49,6 +49,20 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Foam_Amount: 5
+    - Foam_Cutoff: 3.5
+    - Foam_Evolution_Speed: 1.25
+    - Foam_Scale: 5.36
+    - Global_Fading: 30
+    - Light_Probe_Contribution: 2.5
+    - Refaction_Scale: 6.47
+    - Refraction_Evolution_Speed: 1.5
+    - Refraction_Height: 0.2
+    - Vector1_77A997E: 0.5
+    - Water_Depth: 3.14
+    - Wave_Height: 3
+    - Wave_Scale: 10
+    - Wave_Speed: 2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -76,6 +90,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Foam_Color: {r: 1, g: 1, b: 1, a: 0.5450981}
+    - Shallow_Water_Color: {r: 0.44313726, g: 0.8750768, b: 0.8980392, a: 0.3176471}
+    - Trough_Color: {r: 0, g: 0.03410326, b: 0.7215686, a: 0.7529412}
     - _BaseColor: {r: 0.25882354, g: 0.56078434, b: 0.8117648, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.14929688, g: 0.2919383, b: 0.5188679, a: 1}
