@@ -16,7 +16,7 @@ public class DialogueSystem : MonoBehaviour
     public KeyCode dialogueInput = KeyCode.F;
 
     //Text Lines 
-    public List<string> dialogueLines;
+    
     public List<string> senteces;
     public List<string> names;
 
@@ -25,13 +25,12 @@ public class DialogueSystem : MonoBehaviour
     public bool dialogueEnded = false;
     public bool outOfRange = true;
 
-    public AudioClip audioClip;
-    AudioSource audioSource;
+    public List<AudioClip> clipsPlayer;
 
-    // Start is called before the first frame update
+    public DialogueAudio dialogueAudio;
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        dialogueAudio = new DialogueAudio();
         uiText.text = "";
     }//[m] Start()
 
@@ -57,27 +56,32 @@ public class DialogueSystem : MonoBehaviour
             int lengtStringLine = stringToDisplay.Length;
             int currentCharacterIndex = 0;
             uiText.text = "";
-
+            dialogueAudio.saySentence(uiName.text, clipsPlayer, stringToDisplay);
+            Debug.Log("Giro" + currentCharacterIndex + " Nome" + uiName.text);
             while (currentCharacterIndex < lengtStringLine)
             {
               
                 uiText.text += stringToDisplay[currentCharacterIndex];
+                
+               
                 currentCharacterIndex++; // carattere per carattere
                 if (currentCharacterIndex < lengtStringLine)
                 {
                     if (Input.GetKeyDown(dialogueInput))
                     {
                         yield return new WaitForSeconds(letterDelay * letterMultiplier);
-                        Debug.Log("Accelleratuuuu");
+                        
                         //audio
-                        if (audioClip) audioSource.PlayOneShot(audioClip, 0.5F);
+                        //if (audioClip) audioSource.PlayOneShot(audioClip, 0.5F);    
+                        
                     }
                     else
                     {
                         yield return new WaitForSeconds(letterDelay);
-                        Debug.Log("NORMAL");
+                       
                         //audio
-                        if (audioClip) audioSource.PlayOneShot(audioClip, 0.5F);
+                        //if (audioClip) audioSource.PlayOneShot(audioClip, 0.5F);
+                        //dialogueAudio.saySentence(uiName.text, clipsPlayer, stringToDisplay);
                     }
                 }
                 else
@@ -112,11 +116,12 @@ public class DialogueSystem : MonoBehaviour
                 if (!letterIsMultiplied)
                 {
                     letterIsMultiplied = true;
-                    Debug.Log("Indice" + currentDialogueIndex);
+                    
                     uiName.text = names[currentDialogueIndex];
                     StartCoroutine(displayToString(senteces[currentDialogueIndex++]));
+                    //dialogueAudio.saySentence(names[currentDialogueIndex], clipsPlayer, senteces[currentDialogueIndex]);
 
-                    if(currentDialogueIndex>= dialogueLenght)
+                    if (currentDialogueIndex>= dialogueLenght)
                     {
                         dialogueEnded = true;
                     }
@@ -145,8 +150,8 @@ public class DialogueSystem : MonoBehaviour
             letterIsMultiplied = false;
             dialogueActive = false;
             StopAllCoroutines(); //ma se dovessimo usare altre coroutine questo ci uccide anche quelle?
-            dialogueGUI.SetActive(false);
-            dialogueBoxGUI.gameObject.SetActive(false);
+            //dialogueAudio.stopExecution();
+            closeDialogue();
         }
     }// [m] end outOfRangeOfNPC
     public void enterOfRangeOfNPC()
@@ -162,5 +167,6 @@ public class DialogueSystem : MonoBehaviour
     {
         dialogueBoxGUI.gameObject.SetActive(false);
         dialogueGUI.SetActive(false);
+       
     }//[m] end closeDialogue()
 }

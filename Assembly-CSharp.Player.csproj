@@ -616,8 +616,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Sripts\DialogueAudio.cs" />
     <Compile Include="Assets\Sripts\DialogueSystem.cs" />
-    <Compile Include="Assets\Sripts\FlyForce.cs" />
+    <Compile Include="Assets\Sripts\NPCAudio.cs" />
     <Compile Include="Assets\Sripts\NPCTalk.cs" />
     <Compile Include="Assets\Sripts\PauseMenu.cs" />
     <Compile Include="Assets\Sripts\PlayerController.cs" />

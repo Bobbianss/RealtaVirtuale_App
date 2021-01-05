@@ -1296,7 +1296,7 @@ Transform:
   - {fileID: 1004012727}
   - {fileID: 1792306752}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1052871647
 MonoBehaviour:
@@ -1396,6 +1396,7 @@ GameObject:
   - component: {fileID: 1128136660}
   - component: {fileID: 1128136659}
   - component: {fileID: 1128136658}
+  - component: {fileID: 1128136664}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -1503,8 +1504,25 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1128136664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128136657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27ab8c08b1e63d44808a96acac52330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipsPlayer:
+  - {fileID: 8300000, guid: e9dae6a09f764334797534cf4a1d1b91, type: 3}
+  rythm: 0.001
+  isRunning: 0
+  characterName: Umano
 --- !u!1 &1285370101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,7 +1912,7 @@ Transform:
   m_Children:
   - {fileID: 1285370102}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1588516053
 GameObject:
@@ -3128,14 +3146,15 @@ MonoBehaviour:
   letterDelay: 0.001
   letterMultiplier: 0.001
   dialogueInput: 102
-  dialogueLines: []
   senteces: []
   names: []
   letterIsMultiplied: 0
   dialogueActive: 0
   dialogueEnded: 0
-  outOfRange: 1
-  audioClip: {fileID: 8300000, guid: bf86e89f936897b40a38936be55551fe, type: 3}
+  outOfRange: 0
+  clipsPlayer:
+  - {fileID: 8300000, guid: c165ad4fe8845824886849c5e21bea5d, type: 3}
+  dialogueAudio: {fileID: 0}
 --- !u!82 &8860146955159961103
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3147,7 +3166,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 095c0c2127079aa459450ff5da691125,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: a03cf9645a16058449937f6093dde9c9, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

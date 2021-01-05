@@ -12,10 +12,13 @@ public class NPCTalk : MonoBehaviour
 
     // interface
     DialogueSystem dialogueSystem;
+    DialogueAudio dialogueAudio;
 
     // Start is called before the first frame update
     void Start()
     {
+        dialogueAudio = GetComponent<DialogueAudio>();
+
         names = new List<string>();
         sentences = new List<string>();
         if (dialogueFile)
@@ -36,8 +39,8 @@ public class NPCTalk : MonoBehaviour
     }//[m] end Start()
 
     void setUpDialogueText()
-    {        
-        dialogueSystem.dialogueLines = dialogLines;
+    {
+        dialogueSystem.dialogueAudio = dialogueAudio;
         dialogueSystem.names = names;
         dialogueSystem.senteces = sentences;
     }//[m] end setUpDialogueText()
