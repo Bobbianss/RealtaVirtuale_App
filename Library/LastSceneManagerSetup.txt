@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Vecchi assets/Scenes/Prova terreno.unity
+- path: Assets/Assets fatti da noi/Scenes/Prova terreno.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
