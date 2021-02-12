@@ -67,10 +67,14 @@
     <Compile Include="Assets\Assets fatti da noi\Scripts\HungerSystem.cs" />
     <Compile Include="Assets\Assets fatti da noi\Scripts\LandingZone.cs" />
     <Compile Include="Assets\Assets fatti da noi\Scripts\ModelYawAndPitch.cs" />
+    <Compile Include="Assets\Assets fatti da noi\Scripts\PickUpObject.cs" />
     <Compile Include="Assets\Assets fatti da noi\Scripts\PlayerAnimationManager.cs" />
     <Compile Include="Assets\Assets fatti da noi\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Assets fatti da noi\Scripts\Sea.cs" />
     <Compile Include="Assets\Assets fatti da noi\Scripts\Wind.cs" />
+    <Compile Include="Assets\JunkFlyingToTheBin.cs" />
+    <Compile Include="Assets\JunkScript.cs" />
+    <Compile Include="Assets\PickUpCollisionTriggerer.cs" />
     <Compile Include="Assets\Shaders\ScriptableRenderFeatures\DepthNormalsFeature.cs" />
     <None Include="Assets\TextMeshPro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMeshPro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

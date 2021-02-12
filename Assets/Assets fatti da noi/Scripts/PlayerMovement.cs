@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && isWalkingNotFlying)
         {
-            Debug.Log("JumpMethod");
+            //Debug.Log("JumpMethod");
             Jump();
         }
 
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        Debug.Log("Is grounded " + IsGrounded() + "  Is walking " + isWalkingNotFlying + "  Can fly " + canFly + "  Wind taken " + windTaken);
+        //Debug.Log("Is grounded " + IsGrounded() + "  Is walking " + isWalkingNotFlying + "  Can fly " + canFly + "  Wind taken " + windTaken);
     }
 
     void FixedUpdate()

@@ -55,11 +55,15 @@ Material:
     - Foam_Scale: 5.36
     - Global_Fading: 30
     - Light_Probe_Contribution: 2.5
-    - Refaction_Scale: 6.47
+    - Refaction_Scale: 6.49
     - Refraction_Evolution_Speed: 1.5
     - Refraction_Height: 0.2
+    - Vector1_398E6F7F: 0.5
+    - Vector1_495DBFDC: 0
     - Vector1_77A997E: 0.5
-    - Water_Depth: 3.14
+    - Vector1_93E6CC20: 0
+    - Vector1_CCBA7087: 0
+    - Water_Depth: 5
     - Wave_Height: 3
     - Wave_Scale: 10
     - Wave_Speed: 2
@@ -70,6 +74,8 @@ Material:
     - _Cutoff: 0.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _FresnelOpacity: 0.5
+    - _Fresnel_Power: 3
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossinessSource: 0
@@ -90,6 +96,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_9BF846A1: {r: 0.55998576, g: 0.8301887, b: 0.7961739, a: 0.2705882}
     - Foam_Color: {r: 1, g: 1, b: 1, a: 0.5450981}
     - Shallow_Water_Color: {r: 0.44313726, g: 0.8750768, b: 0.8980392, a: 0.3176471}
     - Trough_Color: {r: 0, g: 0.03410326, b: 0.7215686, a: 0.7529412}

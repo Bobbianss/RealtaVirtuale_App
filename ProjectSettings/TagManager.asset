@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Pickable
   - CookingPot
   - NPC
+  - Oggetto da raccogliere
+  - Cestino
   layers:
   - Default
   - TransparentFX
